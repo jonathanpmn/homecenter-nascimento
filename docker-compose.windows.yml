@@ -1,0 +1,8 @@
+# Overlay Windows — use: docker compose -f docker-compose.yml -f docker-compose.windows.yml up -d
+# (Remove mount /dev/dri, que não existe no Windows da mesma forma.)
+
+services:
+  jellyfin:
+    devices: []
+    environment:
+      - JELLYFIN_PublishedServerUrl=${JELLYFIN_PUBLISHED_SERVER_URL:-}

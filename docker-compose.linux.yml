@@ -1,0 +1,9 @@
+# Overlay Linux — Intel Quick Sync (N100, etc.)
+# docker compose -f docker-compose.yml -f docker-compose.linux.yml up -d
+
+services:
+  jellyfin:
+    devices:
+      - /dev/dri:/dev/dri
+    group_add:
+      - "render"

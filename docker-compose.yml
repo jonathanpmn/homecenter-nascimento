@@ -1,0 +1,18 @@
+# Jellyfin — media center local (LAN)
+# Pré-requisito: Docker Desktop (Win/Mac) ou Docker Engine (Linux)
+
+services:
+  jellyfin:
+    image: jellyfin/jellyfin:latest
+    container_name: jellyfin
+    restart: unless-stopped
+    ports:
+      - "8096:8096"
+      - "7359:7359/udp"
+    environment:
+      - JELLYFIN_PublishedServerUrl=${JELLYFIN_PUBLISHED_SERVER_URL:-}
+    volumes:
+      - ./jellyfin/config:/config
+      - ./jellyfin/cache:/cache
+      # Defina MEDIA_PATH no .env (obrigatório no Windows)
+      - ${MEDIA_PATH:-${HOME}/Media}:/media:ro
